@@ -1,4 +1,5 @@
 import socket
+from log import logger 
 # Socket it is lika a two way endpoint that receives data and sends data
 
 
@@ -12,7 +13,8 @@ s.listen(5)
 # this loop is when it is listening for connections
 while True:
     clientsocket, address = s.accept()
-    print(f"Connection from {address} has been established!")
+    # print(f"Connection from {address} has been established!")
+    logger.info(f"Connection from {address} has been established!")
     # sends information to the client socket
     clientsocket.send(bytes("Welcome to the server", "utf-8"))
-    
+    clientsocket.close()
